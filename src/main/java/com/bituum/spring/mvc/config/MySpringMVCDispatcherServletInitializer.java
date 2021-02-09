@@ -3,7 +3,7 @@ package com.bituum.spring.mvc.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MySpringMVCDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-    
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
