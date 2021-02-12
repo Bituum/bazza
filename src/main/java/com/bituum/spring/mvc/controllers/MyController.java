@@ -1,35 +1,39 @@
 package com.bituum.spring.mvc.controllers;
 
+import com.bituum.spring.mvc.dao.UserDaoImpl;
+import com.bituum.spring.mvc.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/login")
 public class MyController {
-    /*private final UserDao userDao;
     @Autowired
-    public MyController(UserDao userDao) {
-        this.userDao = userDao;
-    }*/
-/*
-    @GetMapping("/user")
-    public String showFirstView(){
-        return "main";
-    }*/
+    private UserDaoImpl userdaoimpl;
 
     @GetMapping()
-    public String showAll(Model model){
-        model.addAttribute("Hello");
-        return "/user/showall";
+    public String gettingStarting(){
+        return "/login/start";
     }
 
-    @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model){
+    @GetMapping("/auth")
+    public String login(){
+        return "/login/auth";
+    }
 
-        return null;
+    @GetMapping("/new")
+    public String newUser(Model model){
+        model.addAttribute("user", new User());
+        return "/user/new";
+    }
+
+    @PostMapping()
+    public String create(@ModelAttribute("user") User user){
+        userdaoimpl.add(user);
+        return "redirect:/login";
     }
 }

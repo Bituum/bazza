@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/login}" th:object="${user}">
+        <label for="name">Enter the name: </label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <br/>
+        <label for="secondName">Enter the second name: </label>
+        <input type="text" th:field="*{secondName}" id="secondName"/>
+        <br/>
+        <label for="login">Enter the login: </label>
+        <input type="text" th:field="*{login}" id="login"/>
+        <br/>
+        <label for="password">Enter the password: </label>
+        <input type="text" th:field="*{password}" id="password"/>
+        <br/>
+        <label for="email">Enter the email: </label>
+        <input type="text" th:field="*{email}" id="email"/>
+        <br/>
+        <label for="money">Input your money: </label>
+        <input type="text" th:field="*{money}" id="money"/>
+        <br/>
+        <input type="submit" value="Create!"/>
+
+    </form>
+</body>
+</html>
