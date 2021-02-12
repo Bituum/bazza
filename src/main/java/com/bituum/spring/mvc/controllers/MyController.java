@@ -21,8 +21,21 @@ public class MyController {
     }
 
     @GetMapping("/auth")
-    public String login(){
+    public String login(Model model){
+        model.addAttribute("user", new User());
         return "/login/auth";
+    }
+
+    @PostMapping("/auth")
+    public String login(@ModelAttribute("user") User user, Model model){
+        user = userdaoimpl.login(user);
+        if(user != null){
+            return "user/main_menu";
+        }else{
+            model.addAttribute("no", false);
+            return "redirect:/login";
+        }
+
     }
 
     @GetMapping("/new")

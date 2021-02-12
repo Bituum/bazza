@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,7 +9,12 @@
     <br>
     <h2>All users</h2>
 
-    <div th:each="allUsers : ${allUsers}">
-        <a th:href="@{/user/{id}(id=${allUsers.getId()})}" th:text="${allUsers.getName()}">user</a>
+    <div th:each="user : ${allUsers}">
+        <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+        <form th:method="POST" th:action="@{/users/{id}/delete(id=${user.getId()})}">
+            <input type="submit" class="btn btn-danger" role="button" aria-pressed="true" value="Удалить"/>
+        </form>
+        <br/>
+        <br/>
     </div>
 </body>

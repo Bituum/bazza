@@ -1,5 +1,7 @@
 package com.bituum.spring.mvc.util;
 
+import com.bituum.spring.mvc.models.Deliver;
+import com.bituum.spring.mvc.models.Flower;
 import com.bituum.spring.mvc.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,6 +17,8 @@ public class HibernateSessionFactoryUtil {
             try {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Deliver.class);
+                configuration.addAnnotatedClass(Flower.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

@@ -4,8 +4,9 @@ import com.bituum.spring.mvc.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public interface UserDao {
+public interface DeliverDao {
     List<User> showAll();
 
     User showById(int id);

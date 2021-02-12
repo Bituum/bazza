@@ -1,5 +1,6 @@
 package com.bituum.spring.mvc.dao;
 
+import com.bituum.spring.mvc.models.Flower;
 import com.bituum.spring.mvc.models.User;
 import com.bituum.spring.mvc.util.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -7,63 +8,46 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-
 import javax.transaction.Transactional;
 import java.util.List;
 
-
 @Repository
-public class UserDaoImpl  implements  UserDao{
+public class FlowerDaoImpl {
 
     @Transactional
-    public User showById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);
+    public Flower showById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Flower.class, id);
     }
     @Transactional
-    public void add(User user) {
+    public void add(Flower flower) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.save(user);
+        session.save(flower);
         session.close();
     }
 
     @Transactional
-    public User login(User user){
-        String tmpLogin = user.getLogin();
-        String tmpPassword = user.getPassword();
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        User check = (User)session.createQuery("from User where login = '"+ tmpLogin +"' AND password = '" + tmpPassword+"'").getSingleResult();
-
-        if((check.getLogin().contains(tmpLogin)) &&(check.getPassword().contains(tmpPassword))){
-            return user;
-        }else{
-            return null;
-        }
-
-    }
-    
-    @Transactional
-    public void update(User user) {
+    public void update(Flower flower) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        session.update(user);
+        session.update(flower);
         tx.commit();
         session.close();
     }
 
     @Transactional
-    public void delete(User user) {
+    public void delete(Flower flower) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        session.delete(user);
+        session.delete(flower);
         tx.commit();
 
         session.close();
     }
 
     @Transactional
-    public List<User> showAll() {
+    public List<Flower> showAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery("from User", User.class);
+        Query<Flower> query = session.createQuery("from Flower", Flower.class);
         return query.getResultList();
     }
 }
