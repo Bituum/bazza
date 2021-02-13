@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/flower/new}" th:object="${flower}">
+    <label for="name">Введите название: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="sort">Введите сорт: </label>
+    <input type="text" th:field="*{sort}" id="sort"/>
+    <br/>
+    <label for="cost">Введите цену: </label>
+    <input type="number" th:field="*{cost}" id="cost"/>
+    <br/>
+    <input type="submit" value="Создать" class="btn btn-primary"/>
+</form>
+    <br/>
+    <a th:href="@{/flower}" type="button" class="btn btn-outline-secondary">Назад</a>
+</body>
+</html>

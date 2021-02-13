@@ -10,11 +10,15 @@
     <h2>All users</h2>
 
     <div th:each="user : ${allUsers}">
-        <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+        <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
         <form th:method="POST" th:action="@{/users/{id}/delete(id=${user.getId()})}">
             <input type="submit" class="btn btn-danger" role="button" aria-pressed="true" value="Удалить"/>
         </form>
+        <a th:href="@{/users/{id}/edit(id=${user.getId()})}" type="button" class="btn btn-warning">Изменить</a>
         <br/>
         <br/>
+    </div>
+    <div>
+        <a th:href="@{/login/menu}" type="button" class="btn btn-secondary">Назад</a>
     </div>
 </body>

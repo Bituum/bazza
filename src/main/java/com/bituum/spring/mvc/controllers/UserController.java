@@ -20,7 +20,7 @@ public class UserController {
         return "/user/showall";
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         model.addAttribute("user", userdaoimpl.showById(id));
         return "/user/index";

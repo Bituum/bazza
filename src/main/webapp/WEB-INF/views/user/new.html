@@ -16,7 +16,7 @@
         <input type="text" th:field="*{login}" id="login"/>
         <br/>
         <label for="password">Enter the password: </label>
-        <input type="text" th:field="*{password}" id="password"/>
+        <input type="password" th:field="*{password}" id="password"/>
         <br/>
         <label for="email">Enter the email: </label>
         <input type="text" th:field="*{email}" id="email"/>
@@ -25,7 +25,8 @@
         <input type="text" th:field="*{money}" id="money"/>
         <br/>
         <input type="submit" value="Создать" class="btn btn-primary"/>
-
     </form>
+    <br/>
+    <a th:href="@{/login/menu}" type="button" class="btn btn-secondary">Назад</a>
 </body>
 </html>

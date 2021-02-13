@@ -30,7 +30,7 @@ public class MyController {
     public String login(@ModelAttribute("user") User user, Model model){
         user = userdaoimpl.login(user);
         if(user != null){
-            return "user/main_menu";
+            return "redirect:/login/menu";
         }else{
             model.addAttribute("no", false);
             return "redirect:/login";
@@ -48,5 +48,10 @@ public class MyController {
     public String create(@ModelAttribute("user") User user){
         userdaoimpl.add(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/menu")
+    public String menu(){
+        return "/user/main_menu";
     }
 }

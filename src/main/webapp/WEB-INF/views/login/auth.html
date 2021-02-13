@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Войти</button>
             </div>
         </form>
-        <div id="error" role="alert" class="alert alert-primary" th:if="${ok == false}">Логин или пароль введены неверно.
+        <div id="error" role="alert" class="alert alert-primary" th:if="${ok != false}">Логин или пароль введены неверно.
             Попробуйте ещё раз.
         </div>
     </div>
