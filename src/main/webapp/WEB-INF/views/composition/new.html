@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Доставка</title>
+</head>
+<body>
+<div class="container">
+    <form method="POST" th:object="${composition}" th:action="@{/composition/new}">
+        <label for="title">Введите название: </label>
+        <input type="text" th:field="*{title}" id="title"/>
+        <br/>
+        <select class = "btn dropdown-toggle" name="applicationName">
+            <option th:each="event : ${compositionFlower}"  th:text="${event.getName()}"></option>
+        </select>
+
+
+
+        <button class="btn btn-primary" type="submit">Создать</button>
+    </form>
+
+</div>
+    <a th:href="@{/composition}" type="button" class="btn btn-outline-secondary">Назад</a>
+</body>
+</html>

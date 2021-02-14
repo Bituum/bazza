@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv='Content-Type' content='text/html'; charset="UTF-8"/>
-    <title>Измените параметры цветка</title>
+    <meta charset="UTF-8"/>
+    <title>Доставка</title>
 </head>
 <body>
-<div>
-    <form th:method="POST" th:action="@{/flower/{id}/edit(id=${flower.getId()})}" th:object="${flower}">
+<div class="container">
+    <form method="post" th:object="${deliver}" th:action="@{/deliver/new}">
         <label for="name">Введите название: </label>
         <input type="text" th:field="*{name}" id="name"/>
         <br/>
@@ -16,8 +16,11 @@
         <label for="cost">Введите цену: </label>
         <input type="text" th:field="*{cost}" id="cost"/>
         <br/>
-        <input type="submit" value="Изменить" class="btn btn-primary"/>
+
+        <button class="btn btn-primary" type="submit">Создать</button>
     </form>
+
 </div>
+    <a th:href="@{/deliver}" type="button" class="btn btn-outline-secondary">Назад</a>
 </body>
 </html>

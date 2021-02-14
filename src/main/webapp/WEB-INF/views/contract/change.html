@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv='Content-Type' content='text/html'; charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+    <form method="post" th:action="@{/deliver/{id}/edit(id=${deliver.getId()})}" th:object="${deliver}">
+        <div class="form-group row">
+            <div class="col-md-4 mt-5">
+                <label for="dateOfRegestration">dateOfRegestration</label>
+                <div class="input-group date">
+                    <input type="date" class="form-control" id="dateOfRegestration" autocomplete="off" th:field="*{dateOfRegestration}"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 mt-5">
+                <label for="dateOfExecution">dateOfExecution</label>
+                <div class="input-group date">
+                    <input type="date" class="form-control" id="dateOfExecution" autocomplete="off" th:field="*{dateOfExecution}"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Изменить</button>
+    </form>
+
+</div>
+<a th:href="@{/deliver}" type="button" class="btn btn-outline-secondary">Назад</a>
+</body>
+
+</body>
+</html>

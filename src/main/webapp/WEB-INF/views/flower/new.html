@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv='Content-Type' content='text/html' charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/flower/new}" th:object="${flower}">
+<form th:method="POST" th:action="@{/flower/new}" th:object="${flower}" enctype="multipart/form-data">
     <label for="name">Введите название: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br/>
@@ -13,7 +13,7 @@
     <input type="text" th:field="*{sort}" id="sort"/>
     <br/>
     <label for="cost">Введите цену: </label>
-    <input type="number" th:field="*{cost}" id="cost"/>
+    <input type="text" th:field="*{cost}" id="cost"/>
     <br/>
     <input type="submit" value="Создать" class="btn btn-primary"/>
 </form>

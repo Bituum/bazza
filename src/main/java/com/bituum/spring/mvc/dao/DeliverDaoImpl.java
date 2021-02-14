@@ -6,16 +6,18 @@ import com.bituum.spring.mvc.util.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-public class DeliverDaoImpl {
+@Repository
+public class DeliverDaoImpl implements DeliverDao{
 
 
     @Transactional
-    public User showById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);
+    public Deliver showById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Deliver.class, id);
     }
     @Transactional
     public void add(Deliver deliver) {
@@ -59,9 +61,9 @@ public class DeliverDaoImpl {
     }
 
     @Transactional
-    public List<User> showAll() {
+    public List<Deliver> showAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery("from Deliver", User.class);
+        Query<Deliver> query = session.createQuery("from Deliver", Deliver.class);
         return query.getResultList();
     }
 }

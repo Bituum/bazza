@@ -29,13 +29,15 @@ public class FlowerController {
 
     @PostMapping("/new")
     public String create(@ModelAttribute("flower") Flower flower){
+        System.out.println(flower);
         flowerDao.add(flower);
+        System.out.println(flower);
         return "redirect:/flower";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
-        model.addAttribute("user", flowerDao.showById(id));
+        model.addAttribute("flower", flowerDao.showById(id));
         return "/flower/index";
     }
 

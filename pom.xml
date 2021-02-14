@@ -98,6 +98,12 @@
       <version>8.0.23</version>
     </dependency>
 
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -125,6 +131,9 @@
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
+          <configuration>
+            <resourceEncoding>UTF-8</resourceEncoding>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

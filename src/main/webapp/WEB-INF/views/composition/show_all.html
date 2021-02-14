@@ -3,23 +3,23 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <head>
     <meta http-equiv='Content-Type' content='text/html'; charset="UTF-8"/>
-    <title>Title</title>
+    <title>Доставка</title>
 </head>
 <body>
 <br>
-<h2>Все цветы</h2>
+<h2>Все композиции</h2>
 
-<div th:each="flower : ${allFlowers}">
-    <a th:href="@{/flower/{id}(id=${flower.getId()})}" th:text="${flower.getName()}">flower</a>
-    <form th:method="POST" th:action="@{/flower/{id}/delete(id=${flower.getId()})}">
+<div th:each="composition : ${allCompositions.compositionFlower}">
+    <a th:href="@{/composition/{id}(id=${deliver.getId()})}" th:text="${composition.getName()}"></a>
+    <form th:method="POST" th:action="@{/composition/{id}/delete(id=${composition.getId()})}">
         <input type="submit" class="btn btn-danger" role="button" aria-pressed="true" value="Удалить"/>
     </form>
-    <a th:href="@{flower/{id}/edit(id=${flower.getId()})}" type="button" class="btn btn-warning">Изменить</a>
+    <a th:href="@{composition/{id}/edit(id=${composition.getId()})}" type="button" class="btn btn-warning">Изменить</a>
     <br/>
     <br/>
 </div>
 <div>
-    <a th:href="@{flower/new}" type="button" class="btn btn-success">Создать</a>
+    <a th:href="@{composition/new}" type="button" class="btn btn-success">Создать</a>
     <br/>
     <a th:href="@{/login/menu}" type="button" class="btn btn-secondary">Назад</a>
 </div>

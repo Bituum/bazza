@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class FlowerDaoImpl {
+public class FlowerDaoImpl implements FlowerDao{
 
     @Transactional
     public Flower showById(int id) {

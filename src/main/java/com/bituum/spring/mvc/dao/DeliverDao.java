@@ -1,19 +1,20 @@
 package com.bituum.spring.mvc.dao;
 
+import com.bituum.spring.mvc.models.Deliver;
 import com.bituum.spring.mvc.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface DeliverDao {
-    List<User> showAll();
+    List<Deliver> showAll();
 
-    User showById(int id);
+    Deliver showById(int id);
 
-    void add(User user);
+    void add(Deliver deliver);
 
-    void delete(User user);
+    void delete(Deliver deliver);
 
-    void update(User user);
+    void update(Deliver deliver);
 }
