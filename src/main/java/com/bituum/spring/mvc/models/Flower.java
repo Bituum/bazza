@@ -2,6 +2,8 @@ package com.bituum.spring.mvc.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="flower")
@@ -21,7 +23,33 @@ public class Flower {
     @Column(name="cost")
     private String cost;
 
+    @ManyToMany(mappedBy = "compositionFlower")
+    /*@JoinTable(
+            name="flower-composition",
+            joinColumns = @JoinColumn(name="id_flower"),
+            inverseJoinColumns = @JoinColumn(name = "id_composition")
+    )*/
+    /*@JoinTable(
+            name="`flower-composition`",
+            joinColumns = @JoinColumn(name="id_flower"),
+            inverseJoinColumns = @JoinColumn(name = "id_composition")
+    )*/
+    private List<Composition> compositionList;
 
+    /*public void compositionadd(List<Composition> composition){
+        if (compositionList == null){
+            compositionList = new ArrayList<>();
+        }
+        compositionList.addAll(composition);
+    }*/
+
+    public List<Composition> getCompositionList() {
+        return compositionList;
+    }
+
+    public void setCompositionList(List<Composition> compositionList) {
+        this.compositionList = compositionList;
+    }
 
     @Override
     public String toString() {

@@ -29,6 +29,7 @@ public class FlowerController {
 
     @PostMapping("/new")
     public String create(@ModelAttribute("flower") Flower flower){
+        /*flower.compositionadd(flower.getCompositionList());*/
         System.out.println(flower);
         flowerDao.add(flower);
         System.out.println(flower);

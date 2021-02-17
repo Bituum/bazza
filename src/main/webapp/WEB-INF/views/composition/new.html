@@ -5,15 +5,25 @@
     <title>Доставка</title>
 </head>
 <body>
+
+
+
 <div class="container">
-    <form method="POST" th:object="${composition}" th:action="@{/composition/new}">
+    <form method="POST" th:object="${composition}" th:action="@{/composition/new}"  enctype="multipart/form-data">
         <label for="title">Введите название: </label>
         <input type="text" th:field="*{title}" id="title"/>
         <br/>
-        <select class = "btn dropdown-toggle" name="applicationName">
-            <option th:each="event : ${compositionFlower}"  th:text="${event.getName()}"></option>
-        </select>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select th:field="*{compositionFlower}" class="form-control" multiple="multiple"/>
+                    <option th:each="i : ${flowerList}"
+                            th:field="*{compositionFlower}"
+                            th:value="${i.id}" th:text="${i.name}"
+                    </option>
+            </select>
+</div>
 
+</select>
 
 
         <button class="btn btn-primary" type="submit">Создать</button>

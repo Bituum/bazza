@@ -1,10 +1,12 @@
 package com.bituum.spring.mvc.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name="composition")
+@Table(name="composition", schema = "mydb")
 public class Composition {
     @Id
     @Column
@@ -14,8 +16,12 @@ public class Composition {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH})
+    @JoinTable(
+            name="`flower-composition`",
+            joinColumns = @JoinColumn(name="id_composition"),
+            inverseJoinColumns = @JoinColumn(name = "id_flower")
+    )
     private List<Flower> compositionFlower;
 
     public List<Flower> getCompositionFlower() {
@@ -26,6 +32,21 @@ public class Composition {
         this.compositionFlower = compositionFlower;
     }
 
+    /*public void addFlowerIntoComposition(List<Flower> flower){
+        if(compositionFlower == null){
+            compositionFlower = new ArrayList<>();
+        }
+        compositionFlower.addAll(flower);
+    }*/
+
+    public boolean isSelected(Integer compositionId){
+        if(compositionId != null){
+            return compositionId.equals(id);
+        }
+        return false;
+    }
+
+
     public Composition() {
     }
 
@@ -34,14 +55,7 @@ public class Composition {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "Composition{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", compositionFlower=" + compositionFlower +
-                '}';
-    }
+
 
     public int getId() {
         return id;
@@ -59,5 +73,18 @@ public class Composition {
         this.title = title;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Composition that = (Composition) o;
+        return id == that.id &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(compositionFlower, that.compositionFlower);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, compositionFlower);
+    }
 }

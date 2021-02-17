@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv='Content-Type' content='text/html'; charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+    <a th:text="${composition.getTitle()}"></a>
+    <div th:each="i : ${flowerList}">
+        <p th:text="${i.getName()}"></p>
+    </div>
 
 </body>
 </html>

@@ -9,12 +9,13 @@
 <br>
 <h2>Все композиции</h2>
 
-<div th:each="composition : ${allCompositions.compositionFlower}">
-    <a th:href="@{/composition/{id}(id=${deliver.getId()})}" th:text="${composition.getName()}"></a>
+<div th:each="composition : ${allCompositions}">
+    <a th:href="@{/composition/{id}(id=${composition.getId()})}" th:text="${composition.getTitle()}"></a>
+
     <form th:method="POST" th:action="@{/composition/{id}/delete(id=${composition.getId()})}">
         <input type="submit" class="btn btn-danger" role="button" aria-pressed="true" value="Удалить"/>
     </form>
-    <a th:href="@{composition/{id}/edit(id=${composition.getId()})}" type="button" class="btn btn-warning">Изменить</a>
+    <a th:href="@{composition/{id}/edit(id=${composition.id})}" type="button" class="btn btn-warning">Изменить</a>
     <br/>
     <br/>
 </div>

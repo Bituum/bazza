@@ -25,8 +25,9 @@ public class ContractController {
     }
 
     @GetMapping("/new")
-    public String newConract(Model model){
+    public String newContract(Model model){
         model.addAttribute("contract", new Contract());
+
         return "/contract/new";
     }
 

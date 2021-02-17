@@ -34,4 +34,5 @@ public class MySpringMVCDispatcherServletInitializer extends AbstractAnnotationC
         filters = new Filter[]{httpMethodFilter, encFilter};
         return filters;
     }
+
 }

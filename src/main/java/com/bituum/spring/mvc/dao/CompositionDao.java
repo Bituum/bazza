@@ -2,6 +2,7 @@ package com.bituum.spring.mvc.dao;
 
 import com.bituum.spring.mvc.models.Composition;
 import com.bituum.spring.mvc.models.Deliver;
+import com.bituum.spring.mvc.models.Flower;
 
 import java.util.List;
 
